@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shuma Kise — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- Pixel block grid — fixed overlay for the transition -->
+  <div id="pixel-grid" aria-hidden="true"></div>
+
+  <nav id="navbar">
+    <div class="nav-logo">SK</div>
+    <div class="nav-links">
+      <a href="#models" class="nav-link">3D Models</a>
+      <a href="#games" class="nav-link">Games</a>
+      <a href="#pixel-art" class="nav-link">Pixel Art</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- HERO — 3D SECTION                  -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="hero" class="section-3d">
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="wireframe-cube" aria-hidden="true">
+      <div class="cube-face front"></div>
+      <div class="cube-face back"></div>
+      <div class="cube-face left"></div>
+      <div class="cube-face right"></div>
+      <div class="cube-face top"></div>
+      <div class="cube-face bottom"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag">PORTFOLIO · 2026</div>
+      <h1 class="hero-name">
+        <span class="name-en">SHUMA KISE</span>
+        <span class="name-jp">吉瀬柊馬</span>
+      </h1>
+      <p class="hero-subtitle">Game Developer &nbsp;·&nbsp; Pixel Artist &nbsp;·&nbsp; 3D Artist</p>
+      <a href="#models" class="btn-3d">View Work</a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- 3D MODELS SECTION                  -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="models" class="section-3d models-section">
+    <div class="section-header">
+      <div class="section-tag">DIMENSION / 01</div>
+      <h2 class="section-title-3d">3D <span class="accent">WORKS</span></h2>
+      <p class="section-desc">Gallery of my three-dimensional creations.</p>
+    </div>
+
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-preview">
+          <model-viewer
+            src="models/model1.glb"
+            alt="League of Legends Mordekaiser"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            loading="lazy"
+          ></model-viewer>
+        </div>
+        <div class="model-info">
+          <h3>League of Legends Mordekaiser</h3>
+          <p>Low-poly hand painted asset</p>
+          <div class="model-tags"><span>Blender</span><span>Low-poly</span></div>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-preview">
+          <model-viewer
+            src="models/model2.glb"
+            alt="Environment Prop"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            loading="lazy"
+          ></model-viewer>
+        </div>
+        <div class="model-info">
+          <h3>Environment Prop</h3>
+          <p>Stylized fantasy asset</p>
+          <div class="model-tags"><span>Blender</span><span>Stylized</span></div>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="model-preview">
+          <model-viewer
+            src="models/model3.glb"
+            alt="Weapon Design"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            loading="lazy"
+          ></model-viewer>
+        </div>
+        <div class="model-info">
+          <h3>Weapon Design</h3>
+          <p>Game-ready sword mesh</p>
+          <div class="model-tags"><span>Blender</span><span>Game-ready</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- UNITY GAME SECTION                 -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="unity-game" class="section-3d unity-section">
+    <div class="section-header">
+      <div class="section-tag">DIMENSION / 02</div>
+      <h2 class="section-title-3d">UNITY <span class="accent">GAME</span></h2>
+      <p class="section-desc">3D game demo — assets, VFX, and gameplay.</p>
+    </div>
+
+    <div class="carousel" id="unity-carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <video src="unity-game/unity-demo.mp4" controls></video>
+        </div>
+        <div class="carousel-slide">
+          <video src="unity-game/book.mp4" controls></video>
+        </div>
+        <div class="carousel-slide">
+          <img src="unity-game/modeling-04.png" alt="Modeling 04">
+        </div>
+        <div class="carousel-slide">
+          <img src="unity-game/modeling-06.png" alt="Modeling 06">
+        </div>
+        <div class="carousel-slide">
+          <img src="unity-game/vfx-01.png" alt="VFX 01">
+        </div>
+      </div>
+
+      <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">&#8594;</button>
+
+      <div class="carousel-dots">
+        <span class="carousel-dot active"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+        <span class="carousel-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- TRANSITION TRIGGER ZONE            -->
+  <!-- ═══════════════════════════════════ -->
+  <div id="transition-zone" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- TOWN HERO — parallax layers        -->
+  <!-- Files needed in this folder:       -->
+  <!--   town-far.png  (mountains)        -->
+  <!--   town-mid.png  (town skyline)     -->
+  <!--   town-near.png (foreground)       -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="town-hero">
+    <img src="town.png" id="town-img" alt="">
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- GAMES — PIXEL SECTION              -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="games" class="section-pixel">
+    <div class="scanlines"></div>
+    <div class="pixel-section-header">
+      <div class="pixel-tag">[ GAMES ]</div>
+      <h2 class="pixel-title">MY GAMES</h2>
+      <p class="pixel-desc">&gt; Press START to play_</p>
+    </div>
+
+    <div class="games-grid single-game">
+      <div class="game-card pixel-card">
+        <div class="game-embed-wrapper">
+          <div class="game-poster" id="bravefrog-poster">
+            <img src="games/brave_frog/brave_frog.png" alt="Brave Frog">
+            <button class="play-btn pixel-font" onclick="launchBraveFrog()">&#9654; PLAY</button>
+          </div>
+          <iframe
+            id="bravefrog-frame"
+            src=""
+            data-src="games/brave_frog/brave_frog.html"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="game-info">
+          <h3 class="pixel-font">BRAVE FROG</h3>
+          <p>A Godot game — update this description</p>
+          <div class="pixel-stats">
+            <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+            <span>GODOT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- PIXEL ART GALLERY                  -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="pixel-art" class="section-pixel pixel-gallery">
+    <div class="scanlines"></div>
+    <div class="pixel-section-header">
+      <div class="pixel-tag">[ PIXEL ART ]</div>
+      <h2 class="pixel-title">GALLERY</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="pixel-art/piece1.png" alt="Sunflower Field">
+        <div class="gallery-caption">Sunflower Field</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pixel-art/piece2.png" alt="Butterfly">
+        <div class="gallery-caption">Butterfly</div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="pixel-art/piece3.png" alt="Horses">
+        <div class="gallery-caption">Horses</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pixel-art/piece4.png" alt="Lotus">
+        <div class="gallery-caption">Lotus</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pixel-art/piece5.png" alt="Flower Wreath">
+        <div class="gallery-caption">Flower Wreath</div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="pixel-art/piece6.png" alt="The Saloon">
+        <div class="gallery-caption">The Saloon</div>
+      </div>
+      <div class="gallery-item tall">
+        <img src="pixel-art/piece7.png" alt="Wine Glass">
+        <div class="gallery-caption">Wine Glass</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pixel-art/piece8.png" alt="Shield">
+        <div class="gallery-caption">Shield</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- CONTACT                            -->
+  <!-- ═══════════════════════════════════ -->
+  <section id="contact" class="section-pixel contact-section">
+    <div class="scanlines"></div>
+    <div class="pixel-section-header">
+      <div class="pixel-tag">[ CONTACT ]</div>
+      <h2 class="pixel-title">FIND ME</h2>
+    </div>
+
+    <div class="contact-links">
+      <a href="#" class="contact-btn">[ GITHUB ]</a>
+      <a href="#" class="contact-btn">[ ITCH.IO ]</a>
+      <a href="#" class="contact-btn">[ TWITTER ]</a>
+      <a href="#" class="contact-btn">[ EMAIL ]</a>
+    </div>
+
+    <div class="footer-text">
+      <p class="pixel-font small">© 2026 SHUMA KISE 吉瀬柊馬</p>
+      <p class="pixel-font small blink">INSERT COIN TO CONTINUE_</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
