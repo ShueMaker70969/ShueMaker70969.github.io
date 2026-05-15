@@ -1,4 +1,63 @@
 // ============================================
+// INTERACTIVE CUBE
+// ============================================
+
+(function () {
+  const cube = document.querySelector('.wireframe-cube');
+  if (!cube) return;
+
+  let rotX = 15, rotY = 0;
+  let isDragging = false;
+  let lastX = 0, lastY = 0;
+  let velX = 0, velY = 0;
+  const AUTO_SPEED = 0.27; // matches the original 22s CSS animation at 60fps
+
+  cube.style.animation = 'none';
+
+  function tick() {
+    if (!isDragging) {
+      velX *= 0.92;
+      velY *= 0.92;
+      rotX += velX;
+      rotY += velY + AUTO_SPEED;
+    }
+    cube.style.transform = `translateY(-50%) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    requestAnimationFrame(tick);
+  }
+
+  function dragStart(x, y) {
+    isDragging = true;
+    lastX = x; lastY = y;
+    velX = 0; velY = 0;
+    cube.classList.add('dragging');
+  }
+
+  function dragMove(x, y) {
+    if (!isDragging) return;
+    velY = (x - lastX) * 0.5;
+    velX = -(y - lastY) * 0.5;
+    rotY += velY;
+    rotX += velX;
+    lastX = x; lastY = y;
+  }
+
+  function dragEnd() {
+    isDragging = false;
+    cube.classList.remove('dragging');
+  }
+
+  cube.addEventListener('mousedown',  (e) => { dragStart(e.clientX, e.clientY); e.preventDefault(); });
+  window.addEventListener('mousemove', (e) => dragMove(e.clientX, e.clientY));
+  window.addEventListener('mouseup',   dragEnd);
+
+  cube.addEventListener('touchstart', (e) => { dragStart(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, { passive: false });
+  window.addEventListener('touchmove', (e) => { if (isDragging) { dragMove(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); } }, { passive: false });
+  window.addEventListener('touchend',  dragEnd);
+
+  tick();
+})();
+
+// ============================================
 // PARTICLE CANVAS — hero background
 // ============================================
 

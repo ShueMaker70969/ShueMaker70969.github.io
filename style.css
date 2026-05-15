@@ -148,6 +148,11 @@ body {
   transform-style: preserve-3d;
   animation: rotateCube 22s linear infinite;
   z-index: 1;
+  cursor: grab;
+}
+
+.wireframe-cube.dragging {
+  cursor: grabbing;
 }
 
 .cube-face {
