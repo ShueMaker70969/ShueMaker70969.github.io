@@ -238,6 +238,50 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealTargets.forEach(el => revealObserver.observe(el));
 
 // ============================================
+// PEEK CAROUSEL — centered slide with side peeking
+// ============================================
+
+document.querySelectorAll('.peek-carousel-wrapper').forEach(wrapper => {
+  const track   = wrapper.querySelector('.peek-track');
+  const outer   = wrapper.querySelector('.peek-track-outer');
+  const slides  = wrapper.querySelectorAll('.peek-slide');
+  const dots    = wrapper.querySelectorAll('.carousel-dot');
+  const prevBtn = wrapper.querySelector('.peek-prev');
+  const nextBtn = wrapper.querySelector('.peek-next');
+  let current   = 0;
+
+  function slideWidth()  { return Math.round(outer.offsetWidth * 0.8); }
+  function gapWidth()    { return parseFloat(getComputedStyle(track).columnGap) || 24; }
+
+  function setWidths() {
+    const w = slideWidth();
+    slides.forEach(s => s.style.width = w + 'px');
+  }
+
+  function getTranslate(index) {
+    const sw   = slideWidth();
+    const gap  = gapWidth();
+    const peek = (outer.offsetWidth - sw) / 2;
+    return peek - index * (sw + gap);
+  }
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, slides.length - 1));
+    setWidths();
+    track.style.transform = `translateX(${getTranslate(current)}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  window.addEventListener('resize', () => goTo(current));
+  requestAnimationFrame(() => goTo(0));
+});
+
+// ============================================
 // CAROUSEL
 // ============================================
 
@@ -267,6 +311,20 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   next.addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 });
+
+// ============================================
+// EMAIL COPY TO CLIPBOARD
+// ============================================
+
+function copyEmail() {
+  const email = 'shu_mak@asagi.waseda.jp'; // ← replace with your email
+  const btn   = document.getElementById('email-btn');
+  navigator.clipboard.writeText(email).then(() => {
+    const original = btn.textContent;
+    btn.textContent = '[ COPIED! ]';
+    setTimeout(() => btn.textContent = original, 2000);
+  });
+}
 
 // ============================================
 // GAME EMBED — click-to-play
