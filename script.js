@@ -277,8 +277,9 @@ document.querySelectorAll('.peek-carousel-wrapper').forEach(wrapper => {
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-  window.addEventListener('resize', () => goTo(current));
-  requestAnimationFrame(() => goTo(0));
+
+  const ro = new ResizeObserver(() => goTo(current));
+  ro.observe(outer);
 });
 
 // ============================================
